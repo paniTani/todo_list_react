@@ -1,11 +1,6 @@
 import React, { Component } from 'react';
-// import styled from 'styled-components';
 import AddTodoItem from '../components/AddTodoItem.js';
 import TodoList from '../components/TodoList.js';
-
-// const ListWrapper = styled.div`
-//   //max-width: 500px;
-// `;
 
 class MainPage extends Component {
   constructor(props) {
