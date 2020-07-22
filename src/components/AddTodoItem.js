@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 import { space } from 'styled-system'
-import PrimaryButton from '../components/PrimaryButton.js';
-import PrimaryInput from '../components/PrimaryInput.js';
+import PrimaryButton from './base/PrimaryButton.js';
+import PrimaryInput from './base/PrimaryInput.js';
 
 const AddTodoWrapper = styled.div`
     ${space};
@@ -13,7 +13,6 @@ class AddTodoItem extends Component {
     super(props);
     this.state = {
       value: '',
-      todoTextArray: [],
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -33,11 +32,7 @@ class AddTodoItem extends Component {
   }
 
   addToList() {
-    this.setState(state => ({
-        todoTextArray: [...state.todoTextArray, state.value],
-      })
-    );
-
+    this.props.addItemListFunction(this.state.value);
     this.clearValue();
   }
 
@@ -52,16 +47,6 @@ class AddTodoItem extends Component {
         <PrimaryButton ml="20px" onClick={ this.addToList }>Add</PrimaryButton>
         <br />
         { this.state.value }
-        <br />
-        <h3>item:</h3>
-        {this.state.todoTextArray.map((item, index) => {
-            return (
-              <p key={index}>
-                { item }
-              </p>
-            )
-          })
-        }
       </AddTodoWrapper>
     )
   }
